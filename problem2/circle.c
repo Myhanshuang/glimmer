@@ -55,7 +55,7 @@ void init(){
 
 int main(){
 
-    freopen("sample.in", "r", stdin);
+    freopen("CS-EASY-02-1.txt", "r", stdin);
     freopen("sample.out", "w", stdout);
     init();
 

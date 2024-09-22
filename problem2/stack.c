@@ -10,7 +10,7 @@ int main(){
     freopen("answer.out", "w", stdout);
     while(~scanf("%d", & a[ ++ n]));
     n --;
-    freopen("password.in", "r", stdin);
+    freopen("CS-EASY-02-2.txt", "r", stdin);
     while(~scanf("%c", & b[ ++ m]));
     m --;
     int pos = 1;
