@@ -136,20 +136,16 @@ void reverse(longint * a){// as the name introduce
 void multiply(longint * a, longint * b, longint * c){
     if(a -> tag == b -> tag) c -> tag = 0;
     else c -> tag = -1 ;
-    c -> lenth = a -> lenth + b -> lenth + 10;
-    for(int i = 0; i <= a -> lenth; i ++){
-        for(int j = 0; j <= b -> lenth; j ++){
-            c -> num[i + j] += a -> num[i]  * b -> num[j] ;
-        }
-    }
-    for(int i = 0; i < c -> lenth; i ++){
-        if(c -> num[i] >= 10){
-            c -> num[i + 1] += c -> num[i] / 10;
-            c -> num[i] = c -> num[i] % 10;
+    c -> lenth = a -> lenth + b -> lenth + 3;
+    for(int i = 0; i < a -> lenth; i ++){
+        for(int j = 0; j < b -> lenth; j ++){
+            int t = c -> num[i + j] + (a -> num[i] * b -> num[j]);
+            c -> num[i + j] =  t % 10;
+            c -> num[i + j + 1] += t / 10;
         }
     }
     int highest = c -> lenth - 1;
-    while(c -> num[highest] == 0 && c -> lenth > 1)highest --, c -> lenth --;
+    while(c -> num[highest] == 0 && c -> lenth > 0)highest --, c -> lenth --;
 }
 void init(longint * a){
     memset(a, 0, sizeof a);
