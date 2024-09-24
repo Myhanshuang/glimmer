@@ -7,24 +7,27 @@
 - Q2 ：如何处理大数运算中的进位和借位问题？
   - A2：省流：模拟。可以完全参照我们列竖式进行计算的方式，进行模拟。（用一个专门的变量存丢到下一位就是了撒）
 - Q3：如何处理负数？
-  - A3：可以考虑为字符数组添加一个 bool 标识符或者直接用最后一位 / 第一位进行标记。 ~~(方法多了去了~~)~~
+  - A3：可以考虑为字符数组添加一个 bool 标识符或者直接用最后一位 / 第一位进行标记，还有使用结构体封装（扩展性特别好，我后面就是用的它）。 ~~(方法多了去了~~)~~
 
 ### Part2
 
-- step1 ： 见 storage.c && step1.png
-- step2 ： 见 plus.c && step2.png
-- step3 ： 见 superplus.c && step3.png
+- step1 ： 见 [storage.c](https://github.com/Myhanshuang/glimmer/blob/main/problem4/storage.c) && [step1.png](https://github.com/Myhanshuang/glimmer/blob/main/problem4/step1.png)
+- step2 ： 见 [plus.c](https://github.com/Myhanshuang/glimmer/blob/main/problem4/plus.c) && [step2.png](https://github.com/Myhanshuang/glimmer/blob/main/problem4/step2.png)
+- step3 ： 见 [superplus.c](https://github.com/Myhanshuang/glimmer/blob/main/problem4/superplus.c) && [step3.png](https://github.com/Myhanshuang/glimmer/blob/main/problem4/step3.png)
 
 ### Part 3：从表达式中提取操作数和操作符
 
-- 见 Part3.png && fetch.c
+- 见 [Part3.png](https://github.com/Myhanshuang/glimmer/blob/main/problem4/Part3.png) && [fetch.c](https://github.com/Myhanshuang/glimmer/blob/main/problem4/fetcht.c)
 
 ### Part 4：打包四则运算
 
 - 不是，哥们，怎么这里这么上强度啊（）
 - 幸好不用考虑复杂度，要不然我写这么臭肯定要被我高中教练打死过去（）。
-- 见 Part4_i.png && final.c
-
+- 见 Part4_i.png && [final.c](https://github.com/Myhanshuang/glimmer/blob/main/problem4/final.c)
+  - [Part4_1](https://github.com/Myhanshuang/glimmer/blob/main/problem4/Part4_1.png)
+  - [Part4_2](https://github.com/Myhanshuang/glimmer/blob/main/problem4/Part4_2.png)
+  - [Part4_3](https://github.com/Myhanshuang/glimmer/blob/main/problem4/Part4_3.png)
+  - [Part4_4](https://github.com/Myhanshuang/glimmer/blob/main/problem4/Part4_4.png)
 
 
 ### 意外收获
@@ -45,6 +48,10 @@
 
 这次写高精代码，狠狠地让我领略了一番 C 的魅力呜呜呜……
 
+<<<<<<< HEAD
 ### UPD:debug multiply
 
 - 没想到超char上限了我靠，这数据强度就是不一般啊，远超 ** CCF！
+=======
+写到这里，我可以自豪地说，这份代码能完全解决两个高精数的四则运算！
+>>>>>>> 8b2ff83a4efc9633b97b2815292586eb4a1cb0ee
