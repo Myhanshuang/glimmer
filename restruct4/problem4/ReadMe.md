@@ -11,23 +11,23 @@
 
 ### Part2
 
-- step1 ： 见 [storage.c](https://github.com/Myhanshuang/glimmer/blob/main/problem4/storage.c) && [step1.png](https://github.com/Myhanshuang/glimmer/blob/main/problem4/step1.png)
-- step2 ： 见 [plus.c](https://github.com/Myhanshuang/glimmer/blob/main/problem4/plus.c) && [step2.png](https://github.com/Myhanshuang/glimmer/blob/main/problem4/step2.png)
-- step3 ： 见 [superplus.c](https://github.com/Myhanshuang/glimmer/blob/main/problem4/superplus.c) && [step3.png](https://github.com/Myhanshuang/glimmer/blob/main/problem4/step3.png)
+- [step1](https://github.com/Myhanshuang/glimmer/blob/main/restruct4/problem4/img/step1.png) ： 见 [storage.c](https://github.com/Myhanshuang/glimmer/blob/main/restruct4/problem4/storage.c)
+- [step2](https://github.com/Myhanshuang/glimmer/blob/main/restruct4/problem4/img/step2.png) ： 见 [plus.c](https://github.com/Myhanshuang/glimmer/blob/main/restruct4/problem4/plus.c)
+- [step3](https://github.com/Myhanshuang/glimmer/blob/main/restruct4/problem4/img/step3.png) ： 见 [superplus.c](https://github.com/Myhanshuang/glimmer/blob/main/restruct4/problem4/superplus.c)
 
 ### Part 3：从表达式中提取操作数和操作符
 
-- 见 [Part3.png](https://github.com/Myhanshuang/glimmer/blob/main/problem4/Part3.png) && [fetch.c](https://github.com/Myhanshuang/glimmer/blob/main/problem4/fetcht.c)
+- 见 [Part3.png](https://github.com/Myhanshuang/glimmer/blob/main/restruct4/problem4/img/Part3.png)
 
 ### Part 4：打包四则运算
 
 - 不是，哥们，怎么这里这么上强度啊（）
 - 幸好不用考虑复杂度，要不然我写这么臭肯定要被我高中教练打死过去（）。
-- 见 Part4_i.png && [final.c](https://github.com/Myhanshuang/glimmer/blob/main/problem4/final.c)
-  - [Part4_1](https://github.com/Myhanshuang/glimmer/blob/main/problem4/Part4_1.png)
-  - [Part4_2](https://github.com/Myhanshuang/glimmer/blob/main/problem4/Part4_2.png)
-  - [Part4_3](https://github.com/Myhanshuang/glimmer/blob/main/problem4/Part4_3.png)
-  - [Part4_4](https://github.com/Myhanshuang/glimmer/blob/main/problem4/Part4_4.png)
+- 见 Part4_i.png && [main.c](https://github.com/Myhanshuang/glimmer/blob/main/restruct4/problem4/main.c)
+  - [Part4_1](https://github.com/Myhanshuang/glimmer/blob/main/restruct4/problem4/img/Part4_1.png)
+  - [Part4_2](https://github.com/Myhanshuang/glimmer/blob/main/restruct4/problem4/img/Part4_2.png)
+  - [Part4_3](https://github.com/Myhanshuang/glimmer/blob/main/restruct4/problem4/img/Part4_3.png)
+  - [Part4_4](https://github.com/Myhanshuang/glimmer/blob/main/restruct4/problem4/img/Part4_4.png)
 
 
 ### 意外收获
@@ -54,4 +54,16 @@
 - 没想到超char上限了我靠，这数据强度就是不一般啊，远超 ** CCF！
 =======
 写到这里，我可以自豪地说，这份代码能完全解决两个高精数的四则运算！
+
+### 希望是最后一次UPD
+- 彻底革命
+- 重新组织了程序逻辑
+  - build 为 Cmake 专属文件夹
+  - inc 为头文件专属文件夹
+  - rsc 为文件依赖专属文件夹
+  - test 为测试文件专属文件夹
+    - in 为输入
+    - out 为输出
+  - img 为图片文件夹
+  - 放在外面的都是要求提交的代码
 >>>>>>> 8b2ff83a4efc9633b97b2815292586eb4a1cb0ee
