@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "random": "c",
+        "limits": "c",
+        "cctype": "c",
+        "stdio.h": "c",
+        "stdlib.h": "c",
+        "string.h": "c",
+        "head.h": "c"
+    }
+}
