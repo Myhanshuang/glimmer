@@ -16,12 +16,12 @@
 
 #### 任务 2
 
-- 自定义见 define.c 
+- 自定义见 [head.h](https://github.com/Myhanshuang/glimmer/blob/main/problem5/inc/head.h) 
 - 结构体内存布局：以最长的数据类型为基本单位，每次尝试给成员分配空间的时候，先优先考虑之前分配余下的空间够不够，不够再选择分配一个基本单位量的空间。（如此分配的原因是为了尽可能自然对齐）因此，我在构建结构体的时候，选择使用尽可能小的单位(char)使浪费的空间尽可能小。
-- step1 ：见 [task2_1.c](https://github.com/Myhanshuang/glimmer/blob/main/problem5/task2_1.c)
-- step2 ：见 [task2_2.c](https://github.com/Myhanshuang/glimmer/blob/main/problem5/task2_2.c)
+- [step1](https://github.com/Myhanshuang/glimmer/blob/main/problem5/img/tsak2_1.png) ：见 [task2_1.c](https://github.com/Myhanshuang/glimmer/blob/main/problem5/task2_1.c)
+- [step2](https://github.com/Myhanshuang/glimmer/blob/main/problem5/img/tsak2_2.png) ：见 [task2_2.c](https://github.com/Myhanshuang/glimmer/blob/main/problem5/task2_2.c)
 
-#### 任务 3 
+#### [任务 3](https://github.com/Myhanshuang/glimmer/blob/main/problem5/img/tsak3.png) 
 
 见 [step3.c](https://github.com/Myhanshuang/glimmer/blob/main/problem5/task3.c) 
 
