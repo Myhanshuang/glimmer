@@ -1,4 +1,5 @@
-#include "head.h"
+#include "../inc/head.h"
+#include "define.c"
 /*
 void read()
 {
@@ -70,13 +71,12 @@ void print(PointFixedNum *a)
 }
 */
 
-void read()
+int read()
 {
-    freopen("test.in", "r", stdin);
     while (1)
     {
-        char op;
         char origin[100];
+        memset(origin, 0, sizeof origin);
         if (fgets(origin, 90, stdin) != NULL) // each line
         {
             int pos = 0;
@@ -85,11 +85,15 @@ void read()
                 pos++;
             // move to the start of op or num
             if (isop(origin[pos]))
-                opt[opcnt] = origin[pos], pos++;      // storage the op
+                opt[opcnt++] = origin[pos], pos += 2; // storage the op
+            // 格式有空格，要跳过！！！
             while (pos < lenth && isdig(origin[pos])) // get the num of int
             {
                 num[cnt].IntNum[num[cnt].IntLenth] = origin[pos] - '0';
                 num[cnt].IntLenth++;
+                if (num[cnt].IntLenth > 32)
+                    return 1;
+                pos++;
             }
             if (origin[pos] == '.')
             {
@@ -98,36 +102,46 @@ void read()
                 {
                     num[cnt].PointNum[num[cnt].PointLenth] = origin[pos] - '0';
                     num[cnt].PointLenth++;
+                    if (num[cnt].PointLenth > 32)
+                        return 1;
+                    pos++;
                 }
             }
             num[cnt].jz = origin[pos];
+            cnt++;
         }
         else
             break;
     }
+    return 0;
 }
 
-void print(PointFixedNum *a)
+void print(PointFixedNum a)
 {
-    freopen("test.out", "w", stdout);
-    if (a->IntLenth == 0 || a->PointLenth == 0)
+    // 特判啥也没有
+    if (a.IntLenth == 0 && a.PointLenth == 0)
     {
         printf("0");
         return;
     }
-    if (a->sign == -1)
+    // 输出符号
+    if (a.sign == -1)
     {
         printf("-");
     }
-    for (int i = 0; i < a->IntLenth; i++)
+    // 输出整数部分
+    for (int i = 0; i < a.IntLenth; i++)
     {
-        printf("%d", a->IntNum[i]);
+        printf("%d", a.IntNum[i]);
     }
-    if (a->IntLenth == 0)
+    // 是否有小数部分
+    if (a.IntLenth == 0)
         printf("0");
-    if (a->PointLenth != 0)
+    if (a.PointLenth != 0)
         printf(".");
-    for (int i = 0; i < a->PointLenth; i++)
-        printf("%d", a->PointNum[i]);
-    printf("%c", a->jz);
+    for (int i = 0; i < a.PointLenth; i++)
+        printf("%d", a.PointNum[i]);
+    // 进制
+    printf("%c", a.jz);
+    puts("");
 }

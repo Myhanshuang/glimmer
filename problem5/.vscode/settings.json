@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "head.h": "c",
+        "concepts": "c",
+        "type_traits": "c",
+        "bit": "c",
+        "limits": "c",
+        "*.tcc": "c"
+    }
+}

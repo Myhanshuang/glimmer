@@ -5,8 +5,7 @@
 int main()
 {
     freopen("test/in/test.in", "r", stdin);
-    freopen("test/out/task1.out", "w", stdout);
-    // 进制转换功能已集成至 transform 函数，此处仅作展示，将所有输入转换为二进制
+    freopen("test/out/preclass.out", "w", stdout);
     if (read())
     {
         printf("Do not act as ccf, give me the right input!!!!");
@@ -14,8 +13,8 @@ int main()
     }
     for (int i = 0; i < cnt; i++)
     {
-        if (num[i].jz == 'D')
-            transform(&num[i], 10, 2);
+        if (num[i].jz == 'B')
+            transform(&num[i], 2, 10);
         print(num[i]);
     }
 }
