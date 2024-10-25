@@ -31,8 +31,10 @@
 static void *heap_listp; // 堆的开始指针
 
 #define VERBOSE 0 // 默认不输出调试信息
+
 #ifdef DEBUG
 #define VERBOSE 1 // 在调试模式下启用调试信息输出
+
 #endif
 
 static void *extend_heap(size_t size);
@@ -54,9 +56,9 @@ int mm_init(void)
     PUT(heap_listp + 2 * WSIZE, PACK_ALLOC(8, 1));
     PUT(heap_listp, PACK_ALLOC(0, 1));
     heap_listp += (2 * WSIZE);
-
+    // printf("faslidfalsndfl\n");
     // 扩展堆
-    if (extend_heap(CHUNKSIZE) == (void *)NULL)
+    if (extend_heap(CHUNKSIZE) == NULL)
         return -1;
 
     return 0;
@@ -76,23 +78,35 @@ static void print_heap_blocks(int verbose, const char *func)
     if (!verbose)
         return; // 如果不需要输出调试信息，则直接返回
 
+    // printf("I'm here!\n");
+    // fflush(stdout);
+
     char *curbp = (char *)heap_listp;
 
     printf("\n=========================== %s ===========================\n", func);
+    fflush(stdout);
 
     while (GET_SIZE(HDRP(curbp)) > 0)
     {
         printf("Address: %p\n", curbp);
+        fflush(stdout);
         printf("Size: %d\n", GET_SIZE(HDRP(curbp)));
+        fflush(stdout);
         printf("Allocated: %d\n", GET_ALLOC(HDRP(curbp)));
+        fflush(stdout);
         printf("\n");
+        fflush(stdout);
         curbp = NEXT_BLKP(curbp);
     }
 
-    printf("Address: %p\n", curbp); // Should point to the end of the heap
+    printf("Address: %p\n", curbp);
+    fflush(stdout); // Should point to the end of the heap
     printf("Size: 0\n");
+    fflush(stdout);
     printf("Allocated: 1\n");
+    fflush(stdout);
     printf("=========================== %s ===========================\n", func);
+    fflush(stdout);
 }
 
 /**
@@ -115,6 +129,7 @@ static void *extend_heap(size_t size)
     {
         return NULL;
     }
+    // printf("sadfilajs\n");
     // succeed
     // 将分配出来的空间接到我们的链表上面去
     // 注意：要符合那张图块的实际情况，有头有尾有效载荷一个不少
@@ -122,6 +137,7 @@ static void *extend_heap(size_t size)
     // 同时移动指针，并返回
     PUT(HDRP(temp), PACK_ALLOC(realsize, 0));
     PUT(FTRP(temp), PACK_ALLOC(realsize, 0));
+    // printf("daijlsdf");
     return coalesce(temp);
 }
 
@@ -194,7 +210,8 @@ void *mm_malloc(size_t size)
         op = extend_heap(size);
     }
     place(op, size);
-    print_heap_blocks(VERBOSE, mm_malloc);
+    char a[] = "mm_malloc";
+    print_heap_blocks(VERBOSE, a);
     return op;
 }
 
@@ -210,13 +227,37 @@ void *mm_malloc(size_t size)
 static void *coalesce(void *bp)
 {
     char *tmp = bp;
+    // go after
+    // tmp -> now
+    // head -> next_blkp pointer
+    while (1)
+    {
+        // printf("asdf\n");
+        char *head = NEXT_BLKP(tmp);
+        if (head > heap_listp)
+            break;
+        // 后面的指针存在
+        if (GET_ALLOC(HDRP(head)))
+            break; // 后面的块非空
+        else       // see picture
+        {
+            PUT(HDRP(head), PACK_ALLOC((tmp + GET_SIZE(tmp) - head), 0));
+            PUT(FTRP(head), PACK_ALLOC((tmp + GET_SIZE(tmp) - head), 0));
+            if (GET_SIZE(head) == 0)
+                break; // 到结束就返回
+            tmp = head;
+        }
+    }
     // go before
     // tmp -> now
     // head -> prev_blkp pointer
+    tmp = bp;
     while (1)
     {
+
+        // printf("asdf\n");
         char *head = PREV_BLKP(tmp);
-        if (head < heap_listp)
+        if (GET_SIZE(head) == 0)
             break; // 第一块就返回
         // 前面的指针存在
         if (GET_ALLOC(HDRP(head)))
@@ -228,25 +269,7 @@ static void *coalesce(void *bp)
             tmp = head;
         }
     }
-    // go after
-    // tmp -> now
-    // head -> next_blkp pointer
-    tmp = bp;
-    while (1)
-    {
-        char *head = NEXT_BLKP(tmp);
-        if (GET_SIZE(head) == 0)
-            break; // 到结束就返回
-        // 后面的指针存在
-        if (GET_ALLOC(HDRP(head)))
-            break; // 后面的块非空
-        else       // see picture
-        {
-            PUT(HDRP(head), PACK_ALLOC((tmp + GET_SIZE(tmp) - head), 0));
-            PUT(FTRP(head), PACK_ALLOC((tmp + GET_SIZE(tmp) - head), 0));
-            tmp = head;
-        }
-    }
+    return tmp;
 }
 
 /**
@@ -261,7 +284,8 @@ void mm_free(void *ptr)
     PUT(HDRP(ptr), PACK_ALLOC(GET_SIZE(ptr), 0));
     PUT(FTRP(ptr), PACK_ALLOC(GET_SIZE(ptr), 0));
     coalesce(ptr);
-    print_heap_blocks(VERBOSE, mm_free);
+    char a[] = "mm_free";
+    print_heap_blocks(VERBOSE, a);
 }
 
 // 测试用例
