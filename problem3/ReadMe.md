@@ -258,9 +258,9 @@ P.S. 没看懂该怎么用（）是纯理论吗（
   - 指令寄存器：eip（rip）指向下一条命令存放的地址。
 
   - 段寄存器（和内存模型紧密相关）
-    - 和计算机的寻址紧密相关。计算机将内存空间进行分段，每一个段的起始地址就存放在段寄存器中。当CPU处于16位实地址模式下时，段寄存器存储段的基地址，寻址时，将段寄存器内容左移4位（乘以16）得到段基地址+段内偏移得到最终的地址。当CPU工作于保护模式下，段寄存器存储的内容不再是段基址了，此时的段寄存器中存放的是**段选择子**（Index : 索引表 + TI : GDT or LDT+ RPL : 特权级），用来指示当前这个段寄存器“指向”的是哪个分段。<img src="E:\gitrepository\glimmer\problem3\segregister.png" alt="img" style="zoom: 50%;" />
+    - 和计算机的寻址紧密相关。计算机将内存空间进行分段，每一个段的起始地址就存放在段寄存器中。当CPU处于16位实地址模式下时，段寄存器存储段的基地址，寻址时，将段寄存器内容左移4位（乘以16）得到段基地址+段内偏移得到最终的地址。当CPU工作于保护模式下，段寄存器存储的内容不再是段基址了，此时的段寄存器中存放的是**段选择子**（Index : 索引表 + TI : GDT or LDT+ RPL : 特权级），用来指示当前这个段寄存器“指向”的是哪个分段。<img src="segregister.png" alt="img" style="zoom: 50%;" />
 
-  - 控制寄存器<img src="E:\gitrepository\glimmer\problem3\controlregister.png" alt="img" style="zoom: 50%;" />
+  - 控制寄存器<img src="controlregister.png" alt="img" style="zoom: 50%;" />
 
     - **cr0**: 存储了CPU控制标记和工作状态：是否启用分页、是否启动内存对齐自动检查、是否开启内存写保护、是否开启保护模式。
 
@@ -318,10 +318,10 @@ P.S. 没看懂该怎么用（）是纯理论吗（
 
 - 让我们从物理重新再开始一遍
 
-  - 逻辑门<img src="E:\gitrepository\glimmer\problem3\gate.jpg" alt="gate" style="zoom: 33%;" />
+  - 逻辑门<img src="gate.jpg" alt="gate" style="zoom: 33%;" />
   - 构建 ALU（算数逻辑单元）
     - 计算：通过半加器、全加器等逻辑门的组合进行（观察到 XOR 的运算法则和加法很相近）
-      - 举例：半加器和全加器<img src="E:\gitrepository\glimmer\problem3\ADDER.jpg" alt="ADDER" style="zoom:33%;" />
+      - 举例：半加器和全加器<img src="ADDER.jpg" alt="ADDER" style="zoom:33%;" />
     - 逻辑单元：为计算||判定进行逻辑门组合
       - 举例：判断结果是否为 0 的逻辑单元（把输入的两两 OR 起来，并依次 OR 结果，直到最后一个，再连上一个 NOT 即可）
   - （因出题人提示没必要，中途终止（）
